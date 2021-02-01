@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+# Importación del módulo views con las vistas correspondientes
+from Proyecto1.views import saludo
 
+
+# Aquí se añaden las url de nuestra página.
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # Url de la vista saludo definido en otro módulo de python por lo que
+    # debe importarse dicho módulo para que se pueda reconocer la función.
+    path('saludo/', saludo),
+    
 ]

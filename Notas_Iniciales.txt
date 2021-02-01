@@ -33,8 +33,8 @@ Django utiliza SQLite3 como gestor de bases de datos por defecto, sin embargo
 se recomienda utilizar PostgreeSQL.
 
 El archivo "manage.py" es una utilidad de la linea de comandos que nos permite
-interactuar con nuestro proyecto Django como por ejemplo ofrecer ayuda de sus
-comandos.
+interactuar con nuestro proyecto Django como por ejemplo ofrecer ayuda de los
+comandos Django o las instrucciones para iniciar un proyecto.
 
 La subcarpeta con el nombre del proyecto se trata como un paquete de python.
 

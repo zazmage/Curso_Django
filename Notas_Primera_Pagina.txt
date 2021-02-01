@@ -1,0 +1,20 @@
+Para una primera visualización vamos a valernos de las características del 
+"view" del marco de trabajo de Django, este requiere una "petición" ("request")
+y una "respuesta" ("response") por parte del servidor. Para esta tarea se
+trabajará con dos objetos, uno de tipo request (HttpRequest) para las 
+peticiones y para las respuestas se utilizará un objeto de tipo HttpResponse.
+
+Para la tarea anterior dentro del paquete principal del proyecto se crea un 
+nuevo archivo de python que por convención se le llama "views.py" con extensión
+".py" de python.
+
+Cuando una página del proyecto es solicitada, Django crea un objeto de tipo
+HttpRequest que contiene los metadatos de la petición, luego Django carga la
+vista apropiada cargando el objeto HttpRequest como primer argumento de la
+función vista.
+
+HttpRequest y HttpResponse están definidos en el módulo django.http.
+
+El archivo "views.py" contiene las "vistas" de nuestra página, cada vista tiene
+asociada una url que se guarda en el archivo "urls.py" más específicamente en
+la lista "urlpatterns", que guarda las urls como objetos de tipo path.

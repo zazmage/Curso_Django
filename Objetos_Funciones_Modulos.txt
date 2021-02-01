@@ -1,0 +1,13 @@
+En el archivo "view.py":
+{
+    Módulo de peticiones y respuestas: django.http
+
+    Función para realizar peticiones al servidor: HttpRequest
+
+    Función para dar respuesta desde el servidor: HttpResponse
+}
+
+En el archivo "urls.py":
+{
+    
+}
