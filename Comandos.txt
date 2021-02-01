@@ -1,0 +1,21 @@
+En el command prompt:
+
+    Instalar Django: pip install Django==<Versión> 
+        (En este caso se instala la versión 3.1.6)
+
+    En el interprete de python:
+        Entrar en el interprete de python: python
+        Importar Django: import django
+        Comprobar la versión de Django: django.VERSION
+    
+    Iniciar un nuevo proyecto en una nueva carpeta: django-admin startproject 
+        <Nombre del proyecto>
+    
+    Dentro de la carpeta / paquete del proyecto:
+        Poner el proyecto en funcionamiento, activar la base de datos SQLite3:
+            python manage.py migrate
+
+        Ayuda comandos de Django: manage.py help
+
+        Ejecutar el servidor del proyecto: python manage.py runserver
+

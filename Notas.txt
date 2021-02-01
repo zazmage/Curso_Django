@@ -1,0 +1,54 @@
+Un framework es un marco o entorno de trabajo es un ecosistema formado de un 
+conjunto de herramientas, librerías y buenas practicas para crear aplicaciones.
+
+Con Django se pueden crear sitios web complejos de forma sencilla, simplifica
+las tareas repetitivas permitiendonos reutilizar código.
+
+Django se basa en un patrón llamado "Modelo - Vista - Controlador (MVC)".
+
+Modelo: Gestiona los datos.
+Vista: Muestra la información al usuario.
+Controlador: Gestiona las comunicación entre la vista y el modelo.
+
+Este patrón hace las aplicaciones funcionales, fáciles de mantener y 
+escalables.
+
+Django no utiliza exactamente este patrón sin embargo se basa en MVC, el
+patrón utilizado en Django recibe el nombre de "Model - Template - View (MTV)".
+
+Model: Modelo.
+Template: Vista.
+View: Controlador.
+
+Django se puede instalar de forma local o de forma virtual.
+
+Instalación local: Utiliza una única versión de Django y de Python y utiliza
+las mismas de pendencias.
+
+Instalación virtual: Permite varias versiones de Django y de Python en una 
+misma máqunia, también permite diferentes dependencias para cada proyecto,
+permite igualar los entornos de desarrollo - pruebas - producción (Versiones).
+
+Django utiliza SQLite3 como gestor de bases de datos por defecto, sin embargo
+se recomienda utilizar PostgreeSQL.
+
+El archivo "manage.py" es una utilidad de la linea de comandos que nos permite
+interactuar con nuestro proyecto Django como por ejemplo ofrecer ayuda de sus
+comandos.
+
+La subcarpeta con el nombre del proyecto se trata como un paquete de python.
+
+"settings.py" contiene las configuraciones del proyecto de Django.
+"url.py" Almacena las url del proyecto.
+"wsgi.py" Relativo al servidor web utilizado en el proyecto.
+
+Dentro de "settings.py" también se encuentran las aplicaciones que vienen
+istaladas por defecto con Django.
+
+Para que un proyecto funcione necesita estar asociado a una base de datos,
+por facilidad en un primer momento se utiliza SQLite3 que viene preinstalado 
+con Django.
+
+Django viene con un servidor de pruebas preinstalado, sin embargo es un 
+servidor bastante básico por lo que solo se recomienda para realizar pruebas.
+
