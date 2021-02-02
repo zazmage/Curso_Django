@@ -15,8 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-# Importación del módulo views con las vistas correspondientes
+
+# Importa el módulo views con las vistas correspondientes
 from Proyecto1.views import saludo
+# De igual forma importa la vista "despedida" del módulo views.py
+from Proyecto1.views import despedida
+# Tambíen se puede usar from Proyecto1.views import saludo, despedida
 
 
 # Aquí se añaden las url de nuestra página.
@@ -25,5 +29,5 @@ urlpatterns = [
     # Url de la vista saludo definido en otro módulo de python por lo que
     # debe importarse dicho módulo para que se pueda reconocer la función.
     path('saludo/', saludo),
-    
+    path('nosveremos/', despedida),
 ]

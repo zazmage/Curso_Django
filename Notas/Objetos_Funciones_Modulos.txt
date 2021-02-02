@@ -9,5 +9,8 @@ En el archivo "view.py":
 
 En el archivo "urls.py":
 {
-    
+    Añade urls a nuestra página:
+    urlpatterns = [
+        path('<direccion/>', <funcion>),
+    ]
 }

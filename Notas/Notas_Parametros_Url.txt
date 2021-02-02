@@ -1,0 +1,9 @@
+El parámetro de HttpResponse recibe argumentos con código HTML.
+
+El parámetro de HttpResponse recibe argumentos con código HTML en forma de 
+strings.
+
+Es preferible definir una variable que contenga todo el código HTML y pasar 
+esta variable como argumento del HttpResponse, para definir una cadena de texto
+con varias líneas se utilizan las triples comillas.
+
