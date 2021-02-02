@@ -17,10 +17,12 @@ from django.contrib import admin
 from django.urls import path
 
 # Importa el módulo views con las vistas correspondientes
-from Proyecto1.views import saludo
+# from Proyecto1.views import saludo
 # De igual forma importa la vista "despedida" del módulo views.py
-from Proyecto1.views import despedida
+# from Proyecto1.views import despedida
 # Tambíen se puede usar from Proyecto1.views import saludo, despedida
+
+from Proyecto1.views import saludo, despedida, dameFecha, calculaEdad
 
 
 # Aquí se añaden las url de nuestra página.
@@ -30,4 +32,10 @@ urlpatterns = [
     # debe importarse dicho módulo para que se pueda reconocer la función.
     path('saludo/', saludo),
     path('nosveremos/', despedida),
+    path('fecha/', dameFecha),
+    # El paso de parámetros por url se especifica en corchetes angulares (<>)
+    # "int:" Convierte el parámetro agno de string a entero.
+    # Para pasar más de un parámetro simplemente se especifíca el parámetro
+    # entre corchetes angulares y se separan los parametros con un slash.
+    path('edades/<int:edad>/<int:agno>', calculaEdad),
 ]

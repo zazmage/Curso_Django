@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+import datetime
 
 # Esta es nuestra primera "vista", es una función python y recibe un objeto
 # de tipo HttpResponse como argumento (request), recordar añadir esta vista
@@ -31,4 +32,34 @@ def despedida(request):
     return HttpResponse("Hasta luego alumnos de Django")
 
 # Esta es una vista con contenido dinámico
-def dame
+def dameFecha(request):
+    # Para usar el modulo "datetime" es necesario importarlo
+    fecha_actual = datetime.datetime.now()
+    
+    # %s es un marcador de posición
+    # % indica la variable que va en ese marcador de posición
+    documento = """
+    <html>
+        <body>
+            <h2>Fecha y hora actuales %s</h2>
+        </body>
+    </html>
+    """ %fecha_actual
+    
+    return HttpResponse(documento)
+
+# Esta vista / función calculará una edad según el parámetro que se pase
+# desde la url
+def calculaEdad(request, edad, agno):
+    
+    periodo = agno - 2021
+    edadFutura = edad + periodo
+    documento = """
+    <html>
+        <body>
+            <h2>En el año %s tendrás %s años</h2>
+        </body>
+    </html>
+    """ %(agno,edadFutura)
+    
+    return HttpResponse(documento)

@@ -1,9 +1,15 @@
-El parámetro de HttpResponse recibe argumentos con código HTML.
-
 El parámetro de HttpResponse recibe argumentos con código HTML en forma de 
 strings.
 
 Es preferible definir una variable que contenga todo el código HTML y pasar 
 esta variable como argumento del HttpResponse, para definir una cadena de texto
 con varias líneas se utilizan las triples comillas.
+
+Django posee la característica "Url friendly" que significa que utiliza url en
+un formato muy sencillo de modo que el "ceo" de los motores de búsqueda puedan
+encontrar fácilmente la página.
+
+Los parámetros pasados por url se deben indicar con corchetes angulares (<>)
+en el documento "urls.py" específicamente en la lista de urls "urlpatterns", 
+después del slash (/) de la dirección en el lugar deseado.
 
