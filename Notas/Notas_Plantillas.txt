@@ -1,0 +1,28 @@
+Las plantillas son cadenas de texto que pueden contener código HTML, aunque no
+exclusivamente código HTML, estas pueden ser cualquier archivo de texto plano.
+
+El uso de las plantillas en Django es para separar la parte lógica de la parte
+visual del proyecto.
+
+Escribir el código HTML directamente como cadena de texto en el módulo views
+es considerado una mala practica de programación, lo ideal es separar esto con
+el uso de las plantillas.
+
+La forma mas habitual de usar las plantillas es guardar una cadena de texto con
+digamos código HTML en un documento independiente y después se carga este
+documento en el módulo de views.
+
+Las plantillas permiten la diversificación del trabajo, separando este en
+varias áreas en las cuales se puede trabajar de forma independiente (varios
+programadores diseñadores / programadores).
+
+Para crear una plantilla en Django primero se crea un objeto de tipo "Template"
+luego se crea un objeto de tipo "Context" que hace alución al contexto o a los
+datos adicionales que pueden utilizarse al interior del Template o plantilla
+estos datos pueden ser por ejemplo contenido dinámico. Finalmente se debe
+renderizar el objeto "Template" previamente creado.
+
+Para hacer uso de las variables creadas dentro de la plantilla nos valemos del
+objeto de tipo contexto creado anteriormente, dicho objeto al ser creado recibe
+como argumento diccionarios que nos permiten hacer uso de variables u otros
+objetos.

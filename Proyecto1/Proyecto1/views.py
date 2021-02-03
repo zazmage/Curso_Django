@@ -1,5 +1,7 @@
 from django.http import HttpResponse
 import datetime
+# Se importa la clase "Template" y "Context" desde el módulo "django.template"
+from django.template import Template, Context
 
 # Esta es nuestra primera "vista", es una función python y recibe un objeto
 # de tipo HttpResponse como argumento (request), recordar añadir esta vista
@@ -18,6 +20,11 @@ def saludo(request):
     # Es preferible definir una variable que contenga todo el código HTML y
     # pasar esta variable como argumento del HttpResponse, para definir
     # una cadena de texto con varias líneas se utilizan las triples comillas.
+    
+    # La cadena de texto al interior de la variable documento contiene código
+    # HTML sin embargo esto se considera una mala práctica de programación
+    # en este caso se hará uso de plantillas para organizar mejor el proyecto.
+    '''
     documento = """
     <html>
         <body>
@@ -25,6 +32,37 @@ def saludo(request):
         </body>
     </html>
     """
+    '''
+    
+    nombre = "Juan"
+    
+    # Se recomienda separar la dirección con slash (/)
+    doc_externo = open("Proyecto1/plantillas/miplantilla.html")
+    
+    # Se debe importar la clase Template
+    # Se crea un objeto de tipo "Template" al que se le cargará el código HTML
+    # del archivo "miplantilla.html"
+    plt = Template(doc_externo.read())
+    
+    doc_externo.close()
+    
+    # Se debe importar la clase Context
+    # Se crea un objeto de tipo "Context" que de momento estará vacío debido
+    # a que de momento no tiene contenido dinámico.
+    '''
+    ctx = Context({})
+    '''
+    
+    # El contexto recibe como argumento un diccionario en el cual podemos
+    # especificar el contenido en forma de variables u objetos que queremos
+    # implementar en nuestras vista.
+    ctx = Context({"nombre_persona": nombre})
+    
+    # La función "render" del objeto plt sirve para "renderizar" la vista en
+    # la página, se le pasa el objeto ctx de tipo "Context" creado 
+    # anteriormente.
+    documento = plt.render(ctx)
+    
     return HttpResponse(documento)
 
 # Esta es otra "vista" que de igual forma debe registrarse en "urls.py".
