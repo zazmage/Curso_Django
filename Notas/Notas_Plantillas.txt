@@ -26,3 +26,68 @@ Para hacer uso de las variables creadas dentro de la plantilla nos valemos del
 objeto de tipo contexto creado anteriormente, dicho objeto al ser creado recibe
 como argumento diccionarios que nos permiten hacer uso de variables u otros
 objetos.
+
+Para utilizar dentro del context las utilidades de la programación orientada a
+objetos se utiliza la nomenclatura del punto, esto se puede hacer incluso
+desde la plantilla HTML, utilizando el punto para acceder a las propiedades y
+funciones del objeto específicado.
+
+También podemos hacer uso de nuestras propias clases y objetos definiendolas
+en otros módulos o directamente en el módulo más conveniente.
+
+El diccionario del contexto también recibe listas.
+
+Django tiene una "jerarquía" de llamadas al interior de las plantillas bajo
+el siguiente orden:
+
+1) Diccionario
+2) Atributo
+3) Método
+4) Índice de lista
+
+Desde las plantillas de Django podemos usar bucles y condicionales con la
+siguiente sintaxis:
+
+Sintaxis para bucles for:
+
+{% for <variable> in <lista> %}
+    {{<código>}}
+{% endfor %}
+
+Sintaxis para condicionales if:
+
+{% if <condición> %}
+    {{<código>}}
+{% else %}
+    {{<código>}}
+{% endif %}
+
+Estos condicionales if también soportan operadores de comparación, sin embargo
+no es recomendable abusar de las estructuras de control de flujo dentro de las
+plantillas debido a que la filosofía de Django es separar la parte lógica de la
+parte del diseño, dejando la parte lógica en los módulos python y la parte
+visual en las plantillas.
+
+Dentro de las plantillas también se pueden añadir comentarios Django de una
+única línea con esta sintaxis:
+
+{# Esto es un comentario #}
+
+y de varias lineas con la siguiente sintaxis:
+
+{% comment %}
+    Esto es un comentario
+    de varias líneas
+{% endcomment %}
+
+Django además de facilitar el uso de llamadas a métodos dentro de las
+plantillas también admite el uso de "filtros" con funcionalidades símilares
+con el uso de la nomenclatura de "pipes" o "tuberías" (|) existen varios
+filtros entre los que se encuentran:
+
+"|upper" = Pone en mayúscula una cadena de texto
+"|lower" = Pone en minúscula una cadena de texto
+"|first" = Primera letra de una cadena de texto
+
+los filtros funcionan de forma diferente dependiendo de en dónde se aplique,
+es posible también encadenar estos filtros.

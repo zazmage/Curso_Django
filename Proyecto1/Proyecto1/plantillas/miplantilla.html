@@ -3,14 +3,101 @@
         <h2 style="color: red">
             Hola alumnos esta es nuestra primera plantilla
         </h2>
+        <!--
+            Las estructuras condicionales de Django también admiten operadores
+            de comparación, también es posible añadir comentarios Django de
+            una única línea.
+        -->
+        {# NO TEMAS DISEÑADOR! IGNORA ESTA PARTE #}
+
+        {% comment %}
+            NO TEMAS DISEÑADOR!
+            IGNORA ESTA PARTE
+        {% endcomment %}
+        
+        {% if nombre_persona  == 'Profesor Juan'%}
+        <p>
+            El curso lo imparte el profesor titular
+        </p>
+        {% else %}
+        <p>
+            El curso lo imparte el profesor suplente
+        </p>
+        {% endif %}
+
         <p>
             <!--
                 Para implementar variables en la plantilla se deben ingresar
                 en medio de dos llaves de apertura y de cierre, estas variables
                 deben haberse específicado previamente en el objeto de tipo
                 "Context".
+
+                También se está llamando al método "upper()" y se hace uso del
+                filtro |lower.
             -->
-            El nombre del profesor es: {{nombre_persona}}
+            El nombre del profesor es: {{nombre_persona|lower}} 
+            {{apellido_persona.upper}}
+        </p>
+        <p>
+            <!--
+                "&<letra>acute;" permite añadir acentos del español para
+                cualquier letra.
+
+                Desde aquí mismo a la hora de llamar a las variables u objetos
+                es posible acceder a sus diferentes atributos y funciones
+                através de la nomenclatura del punto.
+
+                En las plantillas la llamada a métodos <objeto.metodo()> y 
+                propiedades <objeto.propiedad> son sintácticamente iguales
+                por lo que para ello debemos guiarnos por la jerarquia de las
+                llamadas al interior de las plantillas.
+            -->
+            Estamos viendo el tema de las plantillas a d&iacute;a: 
+            {{momento_actual.day}} / {{momento_actual.month}} / 
+            {{momento_actual.year}}
+        </p>
+        <p>
+            <strong>
+                Temas del curso:
+            </strong>
+        </p>
+        <p>
+            <!--
+                Para implementar listas de python en la plantilla es tan fácil 
+                como escribir la lista entre dobles corchetes, la lista se
+                mostrará en la página como el output arrojado al imprimir una 
+                lista de python.
+                
+                Si queremos indexar la lista se utiliza la
+                nomenclatura del punto para específicar el índice.
+                
+                Podemos recorrer listas con un bucle for con la sintaxis
+                definida en las notas.
+            -->
+            <!--
+                Esta es una alternativa para mostrar el contenido de la lista
+                uno debajo del otro
+                {% for elTema in temas %}
+                    <p>{{elTema}}</p>
+                {% endfor %}
+            -->
+            <ul>
+                <!--
+                    Esta es la otra alternativa, creando listas HTML, con una
+                    estructura condicional que comprueba si la lista tiene
+                    contenido o está vacía, se hace uso del filtro |first y
+                    del filtro |lower de forma "encadenada".
+                -->
+                {% if temas %}
+                    {% for elTema in temas %}
+                        <li>{{elTema|first|lower}}</li>
+                    {% endfor %}
+                {% else %}
+                    <p>
+                        No hay elementos que mostrar
+                    </p>
+                {% endif %}
+            </ul>
         </p>
     </body>
 </html>
