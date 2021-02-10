@@ -2,6 +2,12 @@ from django.http import HttpResponse
 import datetime
 # Se importa la clase "Template" y "Context" desde el módulo "django.template"
 from django.template import Template, Context
+# Se importa la clase "loader" desde el módulo "django.template"
+'''
+from django.template import loader
+'''
+# También se puede utilizar...
+from django.template.loader import get_template
 
 # Definiendo nuestras propias clases para hacer uso de sus objetos dentro de 
 # nuestras plantillas.
@@ -16,13 +22,17 @@ class Persona(object):
 def saludo(request):
     # Retorna un objeto de tipo HttpResponse que muestra el contenido del 
     # string en su argumento
-    '''return HttpResponse("Hola alumnos esta es nuestra primera página con \
-        Django")'''
+    '''
+    return HttpResponse("Hola alumnos esta es nuestra primera página con \
+        Django")
+    '''
     
     # El parámetro de HttpResponse recibe argumentos con código HTML en forma
     # de strings
-    '''return HttpResponse("<html><body><h1>Hola alumnos esta es nuestra \
-        primera página con Django</html></body></h1>")'''
+    '''
+    return HttpResponse("<html><body><h1>Hola alumnos esta es nuestra \
+        primera página con Django</html></body></h1>")
+    '''
     
     # Es preferible definir una variable que contenga todo el código HTML y
     # pasar esta variable como argumento del HttpResponse, para definir
@@ -67,15 +77,29 @@ def saludo(request):
     ahora = datetime.datetime.now()
     
     # Se recomienda separar la dirección con slash (/)
+    # Para cargar las plantillas haremos uso de la clase "loader".
+    '''
     doc_externo = open("Proyecto1/plantillas/miplantilla.html")
+    '''
     
     # Se debe importar la clase Template
     # Se crea un objeto de tipo "Template" al que se le cargará el código HTML
     # del archivo "miplantilla.html"
+    # Como se hará uso de un "loader" podemos prescindir de la función "read" y
+    # "close".
+    '''
     plt = Template(doc_externo.read())
-    
     doc_externo.close()
-    
+    '''
+
+    # doc_externo ahora será un objeto de tipo loader donde se cargará la 
+    # plantilla especificada como argumento de la funcion "get_template".
+    '''
+    doc_externo = loader.get_template('miplantilla.html')
+    '''
+    # Más resumido...
+    doc_externo = get_template('miplantilla.html')
+
     # Se debe importar la clase Context
     # Se crea un objeto de tipo "Context" que de momento estará vacío debido
     # a que de momento no tiene contenido dinámico.
@@ -102,17 +126,39 @@ def saludo(request):
     
     # Pasando como parámetro un objeto de la clase Persona, creada 
     # anteriomente y una lista de python.
+    # Este contexto aplica únicamente para el método render de la clase 
+    # "Template" sin embargo a la hora de usar cargadores ya este contexto
+    # no funciona.
+    '''
     ctx = Context({
         "nombre_persona": p1.nombre, 
         "apellido_persona": p1.apellido,
         "momento_actual":ahora,
         "temas": temasDelCurso
         })
-    
+    '''
+
     # La función "render" del objeto plt sirve para "renderizar" la vista en
     # la página, se le pasa el objeto ctx de tipo "Context" creado 
     # anteriormente.
+    # La función render a la hora de usar cargadores ya no es necesaria, en su
+    # lugar se renderizará directamente el objeto doc_externo que ya contiene
+    # cargada la plantilla deseada.
+    '''
     documento = plt.render(ctx)
+    '''
+
+    # Llamada a renderizar el objeto "doc_externo", es importante notar que
+    # el método "render" de este objeto es diferente al método render de la
+    # clase "Template", por lo que pide como contexto un valor diferente (un
+    # diccionario), esto debido a que la clase "Template" de "loaders", es
+    # diferente a la clase "Template" de "django.template.Template".
+    documento = doc_externo.render({
+        "nombre_persona": p1.nombre, 
+        "apellido_persona": p1.apellido,
+        "momento_actual":ahora,
+        "temas": temasDelCurso
+        })
     
     return HttpResponse(documento)
 

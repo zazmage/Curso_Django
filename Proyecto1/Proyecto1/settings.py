@@ -54,7 +54,10 @@ ROOT_URLCONF = 'Proyecto1.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # En el valor "DIRS" va la dirección de la carpeta de plantillas en
+        # caso de que se quieran utilizar cargadores, por defecto "DIRS" busca
+        # la dirección en una carpeta de instalación de Django.
+        'DIRS': ['Proyecto1/plantillas'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

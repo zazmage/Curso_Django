@@ -91,3 +91,42 @@ filtros entre los que se encuentran:
 
 los filtros funcionan de forma diferente dependiendo de en dónde se aplique,
 es posible también encadenar estos filtros.
+
+En la documentación de Django "https://docs.djangoproject.com/" las estructuras
+de control de flujo y los filtros aparecen como "template filters" se 
+recomienda consultar esta documentación si se quieren averiguar más operadores
+estructuras y filters.
+
+La forma correcta de cargar una plantilla no es la que se viene implementando
+hasta ahora debido a que no es una solución con la que se puedan implementar
+comodamente varias plantillas (no es escalable) como sería el caso de un 
+proyecto real. Para cargar una plantilla adecuadamente a una vista la forma 
+correcta es através de cargadores de plantillas (loaders).
+
+Para que funcionen los "loaders" necesitamos especificar un directorio
+específico donde se guardaran nuestra plantillas, normalmente a este directorio
+se le llama "templates" sin embargo en nuestro proyecto de practica la carpeta
+de las plantillas se llama "plantillas".
+
+Luego al cargar una plantilla simplemente se utiliza el nombre de la plantilla,
+podemos prescindir del método open y el hecho de leer los documentos que de
+por sí ya son tareas que consumen recursos.
+
+Para implementar un cargador de plantillas lo primero es importar el módulo
+"loader" del paquete "django.template" con la siguiente línea 
+"from django.template import loader". La clase loader contiene un método
+llamado get_template que nos va a permitir cargar las plantillas que Django
+ya sabe que se encuentran en el directorio especificado.
+
+Para que el loader determine la carpeta especificada para las plantillas se
+modifica la lista "templates" del archivo "settings", dentro de la lista
+"templates" se encuentra una clave de un diccionario llamado "DIRS" cuyo
+valor es una lista en donde debemos específicar la ruta de nuestra carpeta
+de plantillas como una cadena de texto.
+
+Cuando se llama a renderizar del objeto "doc_externo", es importante notar que
+el método "render" de este objeto es diferente al método render de la clase 
+"Template", por lo que pide como contexto un valor diferente (un diccionario), 
+esto debido a que la clase "Template" de "loaders", es diferente a la clase 
+"Template" de "django.template.Template".
+
