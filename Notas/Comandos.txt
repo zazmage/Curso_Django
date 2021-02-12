@@ -22,5 +22,73 @@ En el command prompt:
         Ayuda comandos de Django: manage.py help
 
         Ejecutar el servidor del proyecto: python manage.py runserver
+
+        Crear una nueva aplicación: python manage.py startapp <Nombre de la 
+            aplicación>
+        
+        Chekea el estado de una aplicación: python manage.py check <Nombre de 
+            la aplicación>
+        
+        Crea la base de datos SQLite3 con los parámetros específicados: 
+            python manage.py makemigrations
+
+        Generar el código SQL para crear las tablas de la base de datos:
+            python manage.py sqlmigrate <Nombre de la aplicación> <Número de
+            la migración>
+        
+        Aplicar el código SQL para crear las tablas: python manage.py migrate
+
+        Abrir el shell de Django: python manage.py shell
+
+        Añadir entradas a una tabla de la base de datos:
+        Desde el shell de python:
+        {
+            Se añadirá una entrada en la tabla de "Articulos":
+            from gestionPedidos.models import Articulos
+
+            Se crea un objeto de tipo artículos y se inicializa con los valores
+            deseados en la tabla:
+            art = Articulos(nombre = 'mesa', seccion = 'decoración', 
+                precio = 90)
+
+            Se añaden los elementos del objeto a la tabla:
+            art.save()
+
+            Se crea otro elemento:
+            art2 = Articulos(nombre = 'camisa', seccion = 'confección',
+                precio = 75)
+
+            Se añade ese otro elemento a la tabla:
+            art2.save()
+
+            Tambíen se puede hacer todo lo anterior con una única instrucción
+            "create":
+            art3 = Articulos.objects.create(nombre = 'taladro', 
+                seccion = 'ferretería', precio = 65)
+            
+            Actualizar un campo de alguna entrada de la tabla:
+            art.precio = 95
+
+            Guardar la actualización del campo:
+            art.save()
+
+            Eliminar un registro completo de la tabla, primero se selecciona
+            el registro con un objeto:
+            art5 = Articulos.objects.get(id = 2)
+
+            Elimina el registro:
+            art5.delete()
+
+            Realizar un "select" SQL o una consulta (query) de los datos de la 
+            tabla:
+            Guarda en la variable "Lista" todos los registros de una tabla:
+            Lista = Articulos.objects.all()
+
+            Muestra todos los registros: Lista
+
+            Muestra la instrucción SQL, para una búsqueda específica:
+            Lista.query.__str__()
+        }
+
     }
 }

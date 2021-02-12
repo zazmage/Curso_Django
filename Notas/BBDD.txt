@@ -1,0 +1,24 @@
+# Bases de datos
+
+El gestor de bases de datos por defecto de Django es SQLite3.
+
+Hay que tener clara la diferencia entre un proyecto y una aplicación, un
+un proyecto es más general, abarca un espectro mucho más amplio, un proyecto
+puede contener varias aplicaciones dentro de sí. 
+
+En Django la estructura de los proyectos se enfoca en un proyecto principal y 
+una serie de aplicaciones que componen dicho proyecto y que controlan una o
+varias funcionalidades específicas del proyecto.
+
+Las aplicaciones en Django son modulares por lo que pueden ser reutilizadas
+incluso en diferentes proyectos.
+
+La clase "Model" contiene todas las herramientas para manejar bases de datos en
+Django.
+
+Para que Django pueda trabajar con bases de datos necesita de una aplicación.
+
+Cada aplicación creada debe registrarse en la lista "INSTALLED_APPS" del módulo
+"settings".
+
+# Configurar con PostgreSql
