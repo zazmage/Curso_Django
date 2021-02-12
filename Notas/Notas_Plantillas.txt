@@ -130,3 +130,14 @@ el método "render" de este objeto es diferente al método render de la clase
 esto debido a que la clase "Template" de "loaders", es diferente a la clase 
 "Template" de "django.template.Template".
 
+El módulo "django.shortcuts" contiene otro método render que nos permite
+reducir aún más las lineas de código utilizadas para cargar una plantilla.
+
+## Plantillas incrustadas ##
+
+Es posible incrustar plantillas dentro de otra plantilla para ahorrar código.
+
+## Herencia de plantillas ##
+
+La función de la herencia en las plantillas es similar al uso que se le da
+a la herencia en la programación orientada a objetos.

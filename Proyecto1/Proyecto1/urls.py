@@ -22,7 +22,8 @@ from django.urls import path
 # from Proyecto1.views import despedida
 # Tambíen se puede usar from Proyecto1.views import saludo, despedida
 
-from Proyecto1.views import saludo, despedida, dameFecha, calculaEdad
+from Proyecto1.views import saludo, despedida, dameFecha, calculaEdad, cursoC,\
+cursoCss
 
 
 # Aquí se añaden las url de nuestra página.
@@ -38,4 +39,6 @@ urlpatterns = [
     # Para pasar más de un parámetro simplemente se especifíca el parámetro
     # entre corchetes angulares y se separan los parametros con un slash.
     path('edades/<int:edad>/<int:agno>', calculaEdad),
+    path('cursoC/', cursoC),
+    path('cursoCss/', cursoCss),
 ]

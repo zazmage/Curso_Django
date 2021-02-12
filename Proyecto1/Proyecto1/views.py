@@ -9,6 +9,10 @@ from django.template import loader
 # También se puede utilizar...
 from django.template.loader import get_template
 
+# Importando el método render del módulo django.shortcuts para simplificar
+# aún más la carga de plantillas.
+from django.shortcuts import render
+
 # Definiendo nuestras propias clases para hacer uso de sus objetos dentro de 
 # nuestras plantillas.
 class Persona(object):
@@ -98,7 +102,10 @@ def saludo(request):
     doc_externo = loader.get_template('miplantilla.html')
     '''
     # Más resumido...
+    # Se puede resumir aún más usando el método render del módulo shortcuts.
+    '''
     doc_externo = get_template('miplantilla.html')
+    '''
 
     # Se debe importar la clase Context
     # Se crea un objeto de tipo "Context" que de momento estará vacío debido
@@ -153,14 +160,37 @@ def saludo(request):
     # clase "Template", por lo que pide como contexto un valor diferente (un
     # diccionario), esto debido a que la clase "Template" de "loaders", es
     # diferente a la clase "Template" de "django.template.Template".
+    # Se puede meter esta misma instrucción de forma más abreviada con el 
+    # método render del módulo shortcuts.
+    '''
     documento = doc_externo.render({
         "nombre_persona": p1.nombre, 
         "apellido_persona": p1.apellido,
         "momento_actual":ahora,
         "temas": temasDelCurso
         })
+    '''
     
+    # Con el uso del módulo shortcuts debemos cambiar esta instrucción, por el
+    # método render.
+    '''
     return HttpResponse(documento)
+    '''
+    return render(request, "miplantilla.html",{
+        "nombre_persona": p1.nombre, 
+        "apellido_persona": p1.apellido,
+        "momento_actual":ahora,
+        "temas": temasDelCurso
+        })
+
+def cursoC(request):
+    fecha_actual = datetime.datetime.now()
+    return render(request, "CursoC.html", {"dameFecha":fecha_actual})
+
+def cursoCss(request):
+    fecha_actual = datetime.datetime.now()
+    return render(request, "CursoCss.html", {"dameFecha":fecha_actual})
+
 
 # Esta es otra "vista" que de igual forma debe registrarse en "urls.py".
 def despedida(request):

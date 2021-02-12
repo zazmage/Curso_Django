@@ -1,0 +1,13 @@
+<!-- 
+    Con esta instrucción esta plantilla hereda la estructura de la plantilla
+    base.html
+-->
+{% extends 'base.html' %}
+
+{% block title %} Curso C# {% endblock title %}
+
+{% block content %}
+    <p>Estamos a día: {{dameFecha}}</p>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/4nkchdenw-U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{% endblock content %}
+
