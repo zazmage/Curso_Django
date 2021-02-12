@@ -90,5 +90,6 @@ En el command prompt:
             Lista.query.__str__()
         }
 
+        Instalar la libreria psycopg2: pip install psycopg2
     }
 }

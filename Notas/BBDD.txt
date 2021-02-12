@@ -22,3 +22,18 @@ Cada aplicación creada debe registrarse en la lista "INSTALLED_APPS" del módul
 "settings".
 
 # Configurar con PostgreSql
+
+Para trabajar con PostgreSql, primero se descarga el gestor de su página
+oficial junto con la interfaz gráfica, trabién hay que descargar la librería
+"psycopg2" con el comando "pip install psycopg2".
+
+Para crear nuestra base de datos PostgreSql entramos al panel de administración
+PostgreSql "pgAdmin 4" y creamos una base de datos con una instrucción SQL.
+
+Luego de tener unstalada la librería el próximo paso es cambiar la
+configuración en settings para que nuestra base de datos PostgreSql pueda
+conectarse con nuestro proyecto, los cambios deben realizarse específicamente
+en la lista "DATABASES" del módulo "settings".
+
+Para crear tablas, añadir registros, eliminarlos y modificarlos se sigue
+el mismo proceso que para SQLite3.
