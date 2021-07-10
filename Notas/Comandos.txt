@@ -1,5 +1,3 @@
-COMANDOS 
-
 En el command prompt:
 {
 
